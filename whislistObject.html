@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.20.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <title>Image Gallery</title>
+</head>
+<body>
+  <div class="container mt-4">
+    <div class="row" id="imageGallery"></div>
+  </div>
+
+  <script>
+    var image = [
+        {
+        gambar :"https://images.unsplash.com/photo-1698424954529-43aaa37b8ac1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        judul : "labu",
+        deskripsi : "ini adalah labu warisan dari cinderella",
+        },
+        {
+        gambar : "https://images.unsplash.com/photo-1698322281610-0e4d97c90ec7?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        judul : "anak jahanam",
+        deskripsi : "ini adalah  anak yang sudah nyopet labu warisan dari cinderella",
+        },
+        {
+        gambar : "https://images.unsplash.com/photo-1696814543693-31fcf942ccb7?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        judul : "tungku api",
+        deskripsi : "ini adlah api untuk memebakar dirimu",
+        },
+        {
+        gambar :
+      "https://images.unsplash.com/photo-1698443357916-b2a72ceddd9b?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        judul : "sungai",
+        deskripsi : "ini adalah sungai untuk mengkrebekan kamu whahahahah",
+        },
+;
+    ]
+    
+
+    var container = document.getElementById('imageGallery');
+
+    images.forEach(function(imageUrl, index) {
+      var card = document.createElement('div');
+      card.className = 'col-md-3 mb-4';
+      card.innerHTML = `
+        <div class="card">
+          <img src="${imageUrl}" class="card-img-top" alt="Image">
+          <div class="card-body">
+            <p>lorem ipsum</p>
+            <button class="btn btn-success btn-like" onclick="toggleLikeDislike(${index})">
+              <i class="btn-success">
+                <i id="icon" class="bi bi-bookmark-star icon"><span>whislist</span></i>
+                </i> 
+            </button>
+          
+          </div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    var likeStatus = new Array(images.length).fill(false);
+
+    function toggleLikeDislike(index) {
+      var button = document.querySelectorAll('.btn-like')[index];
+      var span = button.querySelector('span');
+      likeStatus[index] = !likeStatus[index];
+      let icon = document.getElementsByClassName("icon")[index];
+
+      if (likeStatus[index]) {
+        button.classList.remove('btn-success');
+        button.classList.add('btn-primary');
+       icon.classList.remove('bi-bookmark-star');
+        icon.classList.add('bi-bookmark-star-fill');
+        span.innerText = "diwhislist";
+      } else {
+        button.classList.remove('btn-primary');
+        button.classList.add('btn-success');
+        icon.classList.remove('bi-bookmark-star-fill');
+        icon.classList.add('bi-bookmark-star');
+        span.innerText = "whislist";
+      }
+    }
+  </script>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-cwzAQq8Ktj5e8YzQzoGoB5KFZmTL5FA+lyBQFZwv4z8AdEVN0CHhC6TCexipU0ea" crossorigin="anonymous"></script>
+</body>
+</html>
