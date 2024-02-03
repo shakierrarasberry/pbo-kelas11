@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transition</title>
+</head>
+<style>
+  
+  #button{
+  margin-top:10px;
+color:#2E4374; 
+border-radius:9px; 
+border: 1px solid #7E94BF; 
+font-family: 'Quicksand', sans-serif;
+font-size:20px;
+  }
+  .bulet{
+    width:100px;
+    height:100px;
+    background: red;
+    border-radius : 50px;
+    transition:all 0.5s;
+    transfrom:translate(0);
+  }
+  .biru{
+   background: blue;
+   transform:translate(200px);
+  }
+  .kotak{
+    width : 100px;
+    height :100px;
+    
+    
+  }
+  .hijau{
+    background: green;
+    opacity:1;
+  }
+  .hijau2{
+    background: green;
+    opacity: 0;
+  }
+</style>
+<body>
+  <div class ="bulet"></div>
+  <button id="button" onclick="add()">klik</button>
+  
+  
+  
+  <div class="kotak"></div>
+  <button class="masuk" onclick="masuk()">masuk</button>
+  <button class="keluar" onclick="keluar()">close</button>
+  <script>
+    let bulet = document.querySelector(" .bulet");
+    function add(){
+      bulet.classList.toggle("biru");
+    }
+  </script>
+  <script>
+    let kotak = document.querySelector(".kotak");
+    function masuk(){
+      kotak.classList.add("hijau");
+      kotak.classList.remove("hijau2");
+      
+    }
+    
+    function keluar(){
+      kotak.classList.add("hijau2");
+      kotak.classList.remove("hijau")
+    }
+  </script>
+</body>
+</html>
